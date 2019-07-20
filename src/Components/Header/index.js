@@ -1,25 +1,45 @@
 import React from 'react';
+import { IconContext } from 'react-icons'
+import { MdViewHeadline, MdSettings, MdNotifications, MdLanguage, MdHome } from 'react-icons/md'
 //import  './styles.css';
-import {Headers, List, Element, View, Text} from './styles';
+import {Headers, List, Element, FieldText, View, Text, Circle} from './styles';
 
 const Header = () => (
     <Headers>
         <List>
-            <Element>Button</Element>
-            <Element>home</Element>
             <Element>
-                <View>
+                <Circle>
+                    <IconContext.Provider value={{color: '#fff' , size:'1.5em' }}>
+                        <View>
+                            <MdViewHeadline/>
+                        </View>
+                    </IconContext.Provider>
+                </Circle>
+            </Element>
+            <Element>
+                <IconContext.Provider value={{color: '#fff' , size:'1.5em' }}>
+                    <MdHome/>
+                </IconContext.Provider>
+            </Element>
+            <Element>
+                <FieldText>
                     <Text type='text'  placeholder='Pesquisar' id='seach'/>
-                </View>
+                </FieldText>
             </Element>
             <Element>
-                Idiomas
+                <IconContext.Provider value={{color: '#fff' , size:'1.5em' }}>
+                    <MdLanguage/>
+                </IconContext.Provider>
             </Element>
             <Element>
-                Notificações
+                <IconContext.Provider value={{color: '#fff' , size:'1.5em' }}>
+                    <MdNotifications/>
+                </IconContext.Provider>
             </Element>
             <Element>
-                Configurações
+                <IconContext.Provider value={{color: '#fff', size:'1.5em' }}>
+                    <MdSettings/>
+                </IconContext.Provider>
             </Element>
         </List>
     </Headers>

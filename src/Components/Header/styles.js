@@ -19,10 +19,10 @@ export const List = styled.ul`
     justify-content: space-between;
 `;
 export const Element = styled.li`
-    margin: auto;
-    padding: auto;
     @media only screen and (min-width: 700px){
         display: block;
+        margin: auto;
+        padding: auto;
         :nth-child(1){
             display: none;
         }
@@ -30,12 +30,10 @@ export const Element = styled.li`
             width: 70%
         }
     }
-    @media only screen and(max-width: 700px){
+    @media only screen and (max-width: 700px){
+        display: none;
         :nth-child(1){
             display: block;
-        }
-        :nth-child(n+1){
-            display: none;
         }
     }
 `;
@@ -54,8 +52,20 @@ export const Text = styled.input.attrs({type: 'text'})`
 
     }  
 `;
-export const View = styled.div`
+export const FieldText = styled.div`
     margin: auto;
     padding: auto;
     width: 80%;
+`;
+export const View = styled.div`
+    padding: 7px;
+`;
+
+export const Circle = styled.div`
+    position: relative;
+    z-index: -10;
+    background: #ff4081;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
 `;
