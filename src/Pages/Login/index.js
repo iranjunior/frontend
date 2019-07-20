@@ -1,5 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { 
+    EMAIL_USER,
+    PASSWORD_USER,
+    LOGGED_USER
+} from "../../Constants/actionsType"
+
 
 import api from '../../Services/api'
 
@@ -8,8 +14,8 @@ import { MdPersonOutline , MdLockOutline } from 'react-icons/md'
 
 import { Container , Card , Logo , Field, InputText , Password ,  LogoInput, Submit, Link} from './styles';
 
-const handleEmail = (e) => ({type: 'EMAIL_USER', email: e.target.value})
-const handlePassword = (e) => ({type: 'PASSWORD_USER', password: e.target.value})
+const handleEmail = (e) => ({type: EMAIL_USER, email: e.target.value})
+const handlePassword = (e) => ({type: PASSWORD_USER, password: e.target.value})
 
 const submitLogin = (user, dispatch) => (
     api.post('/login', {
@@ -18,7 +24,7 @@ const submitLogin = (user, dispatch) => (
     }).then(response =>{
         if(response.status === 200){
             dispatch({
-                type: 'LOGGED_USER',
+                type: LOGGED_USER,
                 token: response.data.token 
             })
         }
@@ -66,4 +72,4 @@ const Login = ({user, dispatch}) => (
   </Container>
   );;
 
-export default connect(state => ({user: state.user}))(Login);
+export default connect(state => ({user: state.auth.user}))(Login);
