@@ -1,18 +1,24 @@
 import api from "./api";
 
 
-export const isAuthenticate = (token) =>{
+const isAuthenticate = (token) =>{
+    console.log(token);
     if(token !== null || token !== undefined){
-        api.get(`/token/${token}`).then(response => {
-            if(response.status === 200 && response.data.token.isRevoked === '0' ){
+        console.log(token);
+        api.get("/token/" + token, {})
+        .then(response => {
+            console.log("Entrou aqui", response);    
+            if(response.status === 200 && response.data.token.is_revoked === false ){
                 return true;
             }
             else
-                return false
-        }).catch(error => {
+            return false
+        })
+        .catch(error => {
             return false
         })
     }else{
         return false
     }
 }
+export default isAuthenticate
