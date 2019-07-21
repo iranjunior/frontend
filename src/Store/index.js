@@ -1,6 +1,9 @@
 import { createStore } from "redux"
 import reducers from '../Reducers'
+import { ConnectedRouter } from 'connected-react-router'
 
-const store = createStore(reducers)
+import history from "../Routes/history";
+
+const store = createStore( ConnectedRouter(history)(reducers) )
 
 export default store;
