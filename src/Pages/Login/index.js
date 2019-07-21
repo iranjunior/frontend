@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
+
 import { 
     EMAIL_USER,
     PASSWORD_USER,
@@ -27,6 +29,7 @@ const submitLogin = (user, dispatch) => (
                 type: LOGGED_USER,
                 token: response.data.token 
             })
+        push('/')
         }
     }).catch(error =>{
     })
