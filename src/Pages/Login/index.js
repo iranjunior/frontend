@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-
 import { 
     EMAIL_USER,
     PASSWORD_USER,
-    LOGGED_USER
+    LOGGED_USER,
+    LOGGED_USER_ID_TOKEN
 } from "../../Constants/actionsType"
 
 
@@ -18,6 +18,7 @@ import { Container , Card , Logo , Field, InputText , Password ,  LogoInput, Sub
 
 const handleEmail = (e) => ({type: EMAIL_USER, email: e.target.value})
 const handlePassword = (e) => ({type: PASSWORD_USER, password: e.target.value})
+//const redict = function(){this.props.history.push('/')} 
 
 const submitLogin = (user, dispatch) => (
     api.post('/login', {
@@ -25,11 +26,18 @@ const submitLogin = (user, dispatch) => (
         password: user.password,
     }).then(response =>{
         if(response.status === 200){
+            console.log(response)
             dispatch({
                 type: LOGGED_USER,
                 token: response.data.token 
             })
-        push('/')
+            dispatch({
+                type: LOGGED_USER_ID_TOKEN,
+                id: response.data.id 
+            })
+            localStorage.setItem('token' ,response.data.token);
+            dispatch( push('/') )
+
         }
     }).catch(error =>{
     })

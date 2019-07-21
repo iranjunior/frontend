@@ -1,11 +1,13 @@
 import { 
     EMAIL_USER,
     PASSWORD_USER,
-    LOGGED_USER
+    LOGGED_USER,
+    LOGGED_USER_ID_TOKEN
 } from "../Constants/actionsType"
 
 
 export default (state = {}, action) =>{
+    console.log(state)
     switch (action.type) {
         case EMAIL_USER:
             return{
@@ -20,7 +22,12 @@ export default (state = {}, action) =>{
         case LOGGED_USER:
             return{
                 ...state,
-                token: action.token
+                token: {...state.token, token: action.token}
+            }
+        case LOGGED_USER_ID_TOKEN:
+            return{
+                ...state,
+                token: {...state.token, id: action.id}
             }
         default:
             return state;

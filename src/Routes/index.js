@@ -1,31 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router'
+import { PrivateRoute } from './privateRoute';
 import history from './history'
 
 import Home  from '../Pages/Home';
 import Login  from '../Pages/Login';
-import { isAuthenticate }  from '../Services/auth';
+//import isAuthenticate  from '../Services/auth';
 
-const PrivateRoute = ({component: Component, token, ...rest}) =>(
-    <Route {...rest} render={(props) =>
-        isAuthenticate(token) ? (
-        <Component {...props}/> 
-        ) :(
-        <Redirect to={{pathname: '/login', state:{from: props.location}}}/>
-        )
-    }/>
-)
+//console.log(isAuthenticate(2));
 
-const Routes = (token) => {
+
+const Routes = (  ) => {
     return (
         <ConnectedRouter history={history}>
             <Switch>
-                <Route path='/' exact component={Home}/>
+                <PrivateRoute path='/' exact component={Home}/>
                 <Route path='/login'  component={Login}/>
             </Switch>
         </ConnectedRouter>
     )
 }
-export default connect(state => ({token: state.auth.token}))(Routes);
+export default connect(state => ({ }))(Routes);
