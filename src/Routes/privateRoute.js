@@ -3,20 +3,29 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import api from '../Services/api';
 
-const isLogged = (token = localStorage.getItem('token_id')) =>(
-            api.get(`/token/${token}`)
+const isLogged = (token = localStorage.getItem('token')) =>(
+            api.get(`/token`, {
+                headers:{
+                    'Authorization': `Bearer ${token}`
+                    }
+            })
             .then(response => (response.data.validator))
-            .catch(err => (err))
+            .catch(err => (false))
     ) 
 export const PrivateRoute = ( {component: Component, ...rest}) =>(
     <Route 
         {...rest} 
-            render={(props) =>
-                     localStorage.getItem('token') !== null && localStorage.getItem('token') !== undefined ? (
-                   <Component {...props}/> 
-                    ) :(
-                    <Redirect to={{pathname: '/login', state:{from: props.location}}}/>
-                    )
+            render={(props) => {
+
+                // localStorage.getItem('token') !== null && localStorage.getItem('token') !== undefined ? (
+                    const isLoggedTest = isLogged() 
+                    if(isLoggedTest){
+                        return        <Component {...props}/> 
+                    } else{
+                        return  <Redirect to={{pathname: '/login', state:{from: props.location}}}/>
+                    }
+                }
+                    
             }/>
 )
 export default connect(state => ({token: state }))(isLogged)
