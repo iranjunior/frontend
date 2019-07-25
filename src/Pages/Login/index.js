@@ -36,6 +36,7 @@ const submitLogin = (user, dispatch) => (
                 id: response.data.id 
             })
             localStorage.setItem('token' ,response.data.token);
+            localStorage.setItem('token_id' ,response.data.id);
             dispatch( push('/') )
 
         }
