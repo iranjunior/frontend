@@ -11,6 +11,7 @@ export default class PrivateRoute extends React.Component {
       }
     }
 
+    
     componentDidMount(){
       
       api.get('/auth', {
