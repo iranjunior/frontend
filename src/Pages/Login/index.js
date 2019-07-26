@@ -4,8 +4,7 @@ import { push } from 'connected-react-router';
 import { 
     EMAIL_USER,
     PASSWORD_USER,
-    LOGGED_USER,
-    LOGGED_USER_ID_TOKEN
+    LOGGED_USER
 } from "../../Constants/actionsType"
 
 
