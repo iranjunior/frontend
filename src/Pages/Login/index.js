@@ -26,17 +26,11 @@ const submitLogin = (user, dispatch) => (
         password: user.password,
     }).then(response =>{
         if(response.status === 200){
-            console.log(response)
             dispatch({
                 type: LOGGED_USER,
                 token: response.data.token 
             })
-            dispatch({
-                type: LOGGED_USER_ID_TOKEN,
-                id: response.data.id 
-            })
             localStorage.setItem('token' ,response.data.token);
-            localStorage.setItem('token_id' ,response.data.id);
             dispatch( push('/') )
 
         }
