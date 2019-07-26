@@ -4,7 +4,7 @@ import { MdViewHeadline, MdSettings, MdNotifications, MdLanguage, MdHome } from 
 //import  './styles.css';
 import {Headers, List, Element, FieldText, View, Text, Circle} from './styles';
 
-import api , { config } from '../../Services/api';
+//import api , { config } from '../../Services/api';
 
 const Header = () => (
     <Headers>
