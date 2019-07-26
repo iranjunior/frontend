@@ -7,7 +7,6 @@ import {
 
 
 export default (state = {}, action) =>{
-    console.log(state)
     switch (action.type) {
         case EMAIL_USER:
             return{
