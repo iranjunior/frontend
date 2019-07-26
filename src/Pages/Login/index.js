@@ -4,8 +4,7 @@ import { push } from 'connected-react-router';
 import { 
     EMAIL_USER,
     PASSWORD_USER,
-    LOGGED_USER,
-    LOGGED_USER_ID_TOKEN
+    LOGGED_USER
 } from "../../Constants/actionsType"
 
 
@@ -30,12 +29,7 @@ const submitLogin = (user, dispatch) => (
                 type: LOGGED_USER,
                 token: response.data.token 
             })
-            dispatch({
-                type: LOGGED_USER_ID_TOKEN,
-                id: response.data.id 
-            })
             localStorage.setItem('token' ,response.data.token);
-            localStorage.setItem('token_id' ,response.data.id);
             dispatch( push('/') )
 
         }

@@ -1,42 +1,31 @@
-import React from 'react';
+import React  from 'react';
 import { Route, Redirect } from 'react-router-dom';
-
 import api from '../Services/api';
-import  Async  from 'react-promise';
 
-const isLogged = (token = localStorage.getItem('token')) =>(
-            api.get(`/auth`, {
-                headers:{
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            .then(response => (response.data.validator))
-            .catch(err => (false))
-    ) 
-export const PrivateRoute = ( {component: Component, ...rest}) =>(
-   <Async promise={isLogged} 
-   then={(<Route 
-    {...rest} 
-        render={(props) =>
-                (<Component {...props}/> )
-   }/>)} 
-    catch={(<Route 
-        {...rest} 
-            render={(props) =>
-                    (<Redirect to={{pathname: '/login', state:{from: props.location}}}/> )
-       }/>)}/>
-   /* 
-    <Route 
-        {...rest} 
-            render={ async (props) =>{
+export default class PrivateRoute extends React.Component {
+    constructor(props){
+      super(props);
+      this.state = {
+        isLogged: false,
+        requestReponse: false
+      }
+    }
 
-                if( await isLogged() === true) 
-                {
-                    return <Component {...props}/> 
-                }else {
-                return   <Redirect to={{pathname: '/login', state:{from: props.location}}}/>
-                    
-                }
-            }
-            }/> */
-)
+    componentDidMount(){
+      
+      api.get('/auth', {
+        headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
+      }).then( res => {
+        if(res.status === 200) this.setState({ requestReponse: true, isLogged: true })
+        else this.setState({requestReponse: true, isLogged: false})
+      }).catch(err => {this.setState({requestReponse: true, isLogged: false})} )
+    }
+
+    render() {
+      if( this.state.requestReponse ){
+        if( this.state.isLogged ) { return <Route path={this.props.path} component={this.props.component}/> }
+        else { return <Redirect to={{pathname: '/login', state:{from: this.props.location}}}/> }
+      } else  return null
+   
+    }
+}
