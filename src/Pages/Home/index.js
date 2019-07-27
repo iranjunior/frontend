@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import Header from '../../Components/Header'
-// import { Container } from './styles';
+import { connect } from 'react-redux'
 
-export default class Home extends Component {
-    
-    render() {
-        return (
-            <Header></Header>
-        );
-  }
-}
+
+const Home = () => (
+        <Header></Header>
+);
+
+export default connect(state =>({}))(Home);

@@ -1,6 +1,8 @@
 import Axios from "axios";
 export const config = {
-    "Authorization":`Bearer ${localStorage.getItem('token')}` 
+    headers: {
+        "Authorization":`Bearer ${localStorage.getItem('token')}` 
+    }
 } 
 const api = Axios.create({
     baseURL: "http://127.0.0.1:3333/",

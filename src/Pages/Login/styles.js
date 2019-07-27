@@ -86,4 +86,3 @@ export const Link = styled.a`
         cursor: pointer;
     }
 `;
-export const Text = styled.label``;

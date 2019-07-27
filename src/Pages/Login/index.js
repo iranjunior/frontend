@@ -4,7 +4,8 @@ import { push } from 'connected-react-router';
 import { 
     EMAIL_USER,
     PASSWORD_USER,
-    LOGGED_USER
+    LOGGED_USER,
+    LOGGED_USER_GET_ID
 } from "../../Constants/actionsType"
 
 
@@ -25,9 +26,14 @@ const submitLogin = (user, dispatch) => (
         password: user.password,
     }).then(response =>{
         if(response.status === 200){
+            console.log(response.data);
             dispatch({
                 type: LOGGED_USER,
                 token: response.data.token 
+            })
+            dispatch({
+                type: LOGGED_USER_GET_ID,
+                id: response.data.user_id 
             })
             localStorage.setItem('token' ,response.data.token);
             dispatch( push('/') )

@@ -69,3 +69,7 @@ export const Circle = styled.div`
     width: 40px;
     border-radius: 50%;
 `;
+export const AvatarSpace = styled.div`
+    height: 30px;
+    width: 30px;
+`;
