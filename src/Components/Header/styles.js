@@ -17,6 +17,9 @@ export const useStyles = makeStyles({
       width: 60,
       height: 60,
     },
+    iconAvatarList:{
+        marginRight: 6
+    }
   });
   
 export const Headers = styled.header`
@@ -89,7 +92,7 @@ export const Circle = styled.div`
     width: 40px;
     border-radius: 50%;
 `;
-export const AvatarSpace = styled.div`
-    height: 30px;
-    width: 30px;
+export const IconSpace = styled.div`
+    margin-right: 10px;
+    margin-top: 5px;
 `;
