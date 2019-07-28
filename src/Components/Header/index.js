@@ -40,7 +40,6 @@ const Header = ( { user ,  uiDesignHeader, dispatch }) => {
 const classes = useStyles();
 
     useEffect(() => {
-        console.log(uiDesignHeader);
         loadUser(user ,dispatch)
     });
         
@@ -96,7 +95,6 @@ const classes = useStyles();
                          }
                      }}
                      >
-                        
                         <MenuItem>Perfil</MenuItem>
                         <MenuItem>Ajustes</MenuItem>
                         <MenuItem>Ajuda</MenuItem>
