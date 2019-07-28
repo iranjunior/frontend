@@ -1,5 +1,24 @@
 import styled from 'styled-components';
-
+import { makeStyles } from '@material-ui/core/styles';
+export const useStyles = makeStyles({
+    avatar: {
+      height: 30,
+      width: 30,
+    },
+    menu: {
+      top: 40
+    },
+    icon_button: {
+      height: 30,
+      width: 30,
+    },
+    bigAvatar: {
+      margin: 10,
+      width: 60,
+      height: 60,
+    },
+  });
+  
 export const Headers = styled.header`
     
         width: 100%;

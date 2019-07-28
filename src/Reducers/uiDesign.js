@@ -1,13 +1,13 @@
-import { CLICKED_AWAY } from '../Constants/actionsType'
+import { UIDESIGN_CLICKED_AVATAR_BUTTON } from '../Constants/actionsType'
 
-export default (state = {uiDesign:{clickedAway: false,}}, action)=>{
+export default (state = {header:{clickedAvatarButton: null}}, action)=>{
     console.log(state);
     switch (action.type) {
-        case CLICKED_AWAY:
+        case UIDESIGN_CLICKED_AVATAR_BUTTON:
             return { ...state,
-                uiDesign:{ 
-                    ...state.uiDesign,
-                    clickedAway: action.uiDesign
+                header:{ 
+                    ...state.header,
+                    clickedAvatarButton: action.uiDesign
                     }
                 }
         default:
