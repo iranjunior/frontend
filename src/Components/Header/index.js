@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { IconContext } from 'react-icons';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
+import Menu from '@material-ui/core/Menu';
+import IconButton from '@material-ui/core/IconButton';
+import MenuItem from '@material-ui/core/MenuItem';
 import { connect } from 'react-redux'
 import { LOADED_USER } from '../../Constants/actionsType'
 
@@ -12,6 +15,10 @@ import api , { config } from '../../Services/api';
 
 const useStyles = makeStyles({
     avatar: {
+      height: 30,
+      width: 30,
+    },
+    icon_button: {
       height: 30,
       width: 30,
     },
@@ -47,17 +54,17 @@ const classes = useStyles();
     <Headers>
         <List>
             <Element>
-                <Circle>
-                    <IconContext.Provider value={{color: '#fff' , size:'1.5em' }}>
-                        <View>
-                            <MdViewHeadline/>
-                        </View>
-                    </IconContext.Provider>
-                </Circle>
+                <IconContext.Provider value={{color: '#fff' , size:'1em' }}>
+                    <View>
+                        <MdViewHeadline/>
+                    </View>
+                </IconContext.Provider>
             </Element>
             <Element>
-                <IconContext.Provider value={{color: '#fff' , size:'1.5em' }}>
-                    <MdHome/>
+                <IconContext.Provider value={{color: '#fff' , size:'1em' }}>
+                    <IconButton>
+                        <MdHome/>
+                    </IconButton>
                 </IconContext.Provider>
             </Element>
             <Element>
@@ -66,28 +73,41 @@ const classes = useStyles();
                 </FieldText>
             </Element>
             <Element>
-                <IconContext.Provider value={{color: '#fff' , size:'1.5em' }}>
-                    <MdLanguage/>
+                <IconContext.Provider value={{color: '#fff' , size:'1em' }}>
+                    <IconButton>
+                        <MdLanguage/>
+                    </IconButton>
                 </IconContext.Provider>
             </Element>
             <Element>
-                <IconContext.Provider value={{color: '#fff' , size:'1.5em' }}>
-                    <MdNotifications/>
+                <IconContext.Provider value={{color: '#fff' , size:'1em' }}>
+                    <IconButton>
+                        <MdNotifications/>
+                    </IconButton>
                 </IconContext.Provider>
             </Element>
             <Element>
-                <IconContext.Provider value={{color: '#fff' , size:'1.5em' }}>
+                <IconContext.Provider value={{color: '#fff' , size:'1em' }}>
+                    <IconButton aria-controls='dropdown-menu-avatar-header' aria-haspopup="true" >
                         <Avatar alt='default' src='https://picsum.photos/200/300' className={classes.avatar} />
+                    </IconButton>
+                     <Menu id='dropdown-menu-avatar-header'>
+                        
+                    </Menu>   
                 </IconContext.Provider>
             </Element>
             <Element>
-                <IconContext.Provider value={{color: '#fff', size:'1.5em' }}>
-                    <MdSettings/>
+            <IconContext.Provider value={{color: '#fff' , size:'1em' }}>
+                    <IconButton aria-controls='dropdown-menu-avatar-header' aria-haspopup="true" >
+                        <MdSettings/>
+                    </IconButton>
+                     <Menu id='dropdown-menu-avatar-header'>
+                    </Menu>   
                 </IconContext.Provider>
             </Element>
         </List>
     </Headers>
 );
-}
+} 
 
 export default connect(state => ({...state, user: state.user.user}))(Header);

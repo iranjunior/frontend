@@ -17,6 +17,7 @@ export const List = styled.ul`
     flex-flow: row;
     flex-direction: row;
     justify-content: space-between;
+    margin: 2px;
 `;
 export const Element = styled.li`
     @media only screen and (min-width: 700px){
