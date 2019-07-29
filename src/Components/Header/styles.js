@@ -29,7 +29,7 @@ export const Headers = styled.header`
         position: absolute;
         top: 0;
         left: 0;
-        z-index: -1000;
+        z-index: 10;
         box-shadow: 1px 1px 2px 1px rgba(10,10,10,0.3);
     
 `;

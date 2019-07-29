@@ -26,7 +26,6 @@ const submitLogin = (user, dispatch) => (
         password: user.password,
     }).then(response =>{
         if(response.status === 200){
-            console.log(response.data);
             dispatch({
                 type: LOGGED_USER,
                 token: response.data.token 

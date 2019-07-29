@@ -5,14 +5,13 @@ import { IconContext } from 'react-icons';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
+import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import { LOADED_USER, UIDESIGN_CLICKED_AVATAR_BUTTON, LOGGED_USER } from '../../Constants/actionsType'
+import {  UIDESIGN_CLICKED_AVATAR_BUTTON, LOGGED_USER } from '../../Constants/actionsType'
 
 import { MdViewHeadline, MdSettings, MdNotifications, MdLanguage, MdHome, MdPermIdentity, MdFirstPage, MdHelpOutline } from 'react-icons/md'
 import {Headers, List, Element, FieldText, View, Text, IconSpace, Circle, useStyles }  from './styles';
 
-
-import api , { config } from '../../Services/api';
 const handleClickAvatar = (e) =>({
         type: UIDESIGN_CLICKED_AVATAR_BUTTON, 
         uiDesign: e.currentTarget
@@ -27,29 +26,37 @@ dispatch({
     type:LOGGED_USER,
     token: null
 })
+dispatch({
+    type: UIDESIGN_CLICKED_AVATAR_BUTTON, 
+    uiDesign: null
+})
 localStorage.setItem('token', null)
 dispatch(push('/login'))
 }
-const loadUser = (user , dispatch) => {
-    if(!user){
-    api.get(`/user`, config)
-        .then(response => { 
-            if(response.status === 200)
-            dispatch({
-                type: LOADED_USER,
-                user:response.data.user 
-            })
-        } )
-        .catch()
-    }
-}
+const StyledMenu = withStyles({
+    paper: {
+      border: '1px solid #d3d4d5',
+    },
+  })(props => (
+    <Menu
+      elevation={0}
+      getContentAnchorEl={null}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'center',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'center',
+      }}
+      {...props}
+    />
+  ));
+  
 
 const Header = ( { user ,  uiDesignHeader, dispatch }) => {
 const classes = useStyles();
 
-    useEffect(() => {
-        loadUser(user ,dispatch)
-    });
         
     return (
     <Headers>
@@ -94,17 +101,14 @@ const classes = useStyles();
                     <IconButton aria-controls='dropdown-menu-avatar-header' aria-haspopup="true" onClick={(e) => {dispatch(handleClickAvatar(e))}}>
                         <Avatar alt='default' src='https://picsum.photos/200/300' className={classes.avatar} />
                     </IconButton>
-                     <Menu id='dropdown-menu-avatar-header'
-                     anchorEl={uiDesignHeader.clickedAvatarButton}
-                     keepMounted
-                     open={Boolean(uiDesignHeader.clickedAvatarButton)}
-                     onClose={(e) => {dispatch(handleClickAvatarClose())}}
-                     PaperProps={{
-                         style: {
-                             top: 60
-                         }
-                     }}
-                     >
+                    <StyledMenu
+                    id='dropdown-menu-avatar-header'
+                    anchorEl={uiDesignHeader.clickedAvatarButton}
+                    keepMounted
+                    open={Boolean(uiDesignHeader.clickedAvatarButton)}
+                    onClose={(e) => {dispatch(handleClickAvatarClose())}}
+                    >
+
                         <MenuItem>
                            <IconSpace>
                                 <IconContext.Provider value={{color: '#333' , size:'1.3em'}}>
@@ -137,8 +141,8 @@ const classes = useStyles();
                                 </IconContext.Provider>
                            </IconSpace>
                         Sair
-                        </MenuItem>
-                    </Menu>   
+                        </MenuItem>   
+                    </StyledMenu>
                 </IconContext.Provider>
             </Element>
         </List>
