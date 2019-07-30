@@ -1,4 +1,44 @@
 import styled from "styled-components";
+const nivelVacancies = {
+  shadow: {
+    baixo: "1 6px 20px 0 rgba(244, 143, 177, 0.5)",
+    medio: "0 6px 20px 0 rgba(255, 111, 0, 0.3)",
+    alto: "0 6px 20px 0 rgba(77, 182, 172, 0.5)"
+  },
+
+  card: {
+    baixo: "linear-gradient(45deg, #FF5252 0%, #f48fb1 100%)",
+    medio: "linear-gradient(45deg, #ff6f00 0%, #ffca28 100%)",
+    alto: "linear-gradient(45deg, #43A047 0%, #1de9b6 100%)"
+  }
+};
+export const CardStyle = styled.div(props => {
+    let nivelVacanciesColor = '';
+    let nivelVacanciesColorShadow = '';
+  if (props.vacancies < 4) {
+    nivelVacanciesColor = nivelVacancies.card.baixo;
+    nivelVacanciesColorShadow = nivelVacancies.shadow.baixo;
+  } else if (props.vacancies < 7) {
+    nivelVacanciesColor = nivelVacancies.card.medio;
+    nivelVacanciesColorShadow = nivelVacancies.shadow.medio;
+  } else {
+    nivelVacanciesColor = nivelVacancies.card.alto;
+    nivelVacanciesColorShadow = nivelVacancies.shadow.alto;
+  }
+  return {
+    borderRadius: "3px",
+    width: "250px",
+    height: "150px",
+    boxShadow: nivelVacanciesColorShadow,
+    margin: "20px 10px",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "start",
+    alignItems: "start",
+    flexWrap: "wrap",
+    background: nivelVacanciesColor
+  };
+});
 
 export const Container = styled.div`
   position: relative;

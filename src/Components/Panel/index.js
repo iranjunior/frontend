@@ -6,7 +6,7 @@ import { MdWhatshot } from 'react-icons/md'
 import { IconContext } from 'react-icons';
 
 
-import { Container, Card, Hospital, Vacancies, Specialities, Icon, Name } from './styles';
+import { Container, Hospital, Vacancies, Specialities, Icon, Name, CardStyle } from './styles';
 
 const loadVacancies = (vacancies, dispatch) => {
 
@@ -40,7 +40,7 @@ const Panel = ({ vacancies , dispatch}) => {
                 vacancies.map(el => {
                   return(
 
-                      <Card>
+                      <CardStyle vacancies={el.vacancy} key={el.key.toString()}>
                         <Hospital>{el.hospital}</Hospital>
                         <Specialities>
                             <Icon>
@@ -56,7 +56,7 @@ const Panel = ({ vacancies , dispatch}) => {
                                 Leitos
                             </Name>
                         </Vacancies>
-                    </Card>                    
+                    </CardStyle>                    
                       )}  
                 )
             }
