@@ -10,7 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {  UIDESIGN_CLICKED_AVATAR_BUTTON, LOGGED_USER } from '../../Constants/actionsType'
 
 import { MdViewHeadline, MdSettings, MdNotifications, MdLanguage, MdHome, MdPermIdentity, MdFirstPage, MdHelpOutline } from 'react-icons/md'
-import {Headers, List, Element, FieldText, View, Text, IconSpace, Circle, useStyles }  from './styles';
+import {Headers, List, Element, Field, View, IconSpace, Circle, useStyles }  from './styles';
 
 const handleClickAvatar = (e) =>({
         type: UIDESIGN_CLICKED_AVATAR_BUTTON, 
@@ -78,9 +78,7 @@ const classes = useStyles();
                 </IconContext.Provider>
             </Element>
             <Element>
-                <FieldText>
-                    <Text type='text'  placeholder='Pesquisar' id='seach'/>
-                </FieldText>
+                <Field/>
             </Element>
             <Element>
                 <IconContext.Provider value={{color: '#fff' , size:'1em' }}>

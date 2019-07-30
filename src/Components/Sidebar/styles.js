@@ -26,7 +26,7 @@ export const useStyles = makeStyles({
 
 export const Sidebars = styled.div`
   @media only screen and (min-width: 700px) {
-    min-height: 100vh;
+    min-height: 100%;
     box-shadow: 1px 1px 7px 1px rgba(10,10,10,0.3);
     width: 250px;
     position: fixed;

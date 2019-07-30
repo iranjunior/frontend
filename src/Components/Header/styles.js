@@ -75,7 +75,7 @@ export const Text = styled.input.attrs({type: 'text'})`
 
     }  
 `;
-export const FieldText = styled.div`
+export const Field = styled.div`
     margin: auto;
     padding: auto;
     width: 80%;

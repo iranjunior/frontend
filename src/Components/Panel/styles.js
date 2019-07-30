@@ -42,13 +42,18 @@ export const CardStyle = styled.div(props => {
 
 export const Container = styled.div`
   position: relative;
-  left: 250px;
+  left: 320px;
   width: 80%;
   display: flex;
   flex-direction: row;
   top: 60px;
   justify-content: start;
   flex-wrap: wrap;
+  @media only screen and (max-width: 700px) {
+    width: 100%;
+    left: 0px;
+  }
+
 `;
 export const Card = styled.div`
   border-radius: 3px;
@@ -62,6 +67,11 @@ export const Card = styled.div`
   align-items: start;
   flex-wrap: wrap;
   background: linear-gradient(45deg, #ff6f00 0%, #ffca28 100%);
+  
+  @media only screen and (max-width: 700px) {
+    width: 80%;
+    margin: auto;
+  }
 `;
 export const Hospital = styled.div`
   width: 100%;
