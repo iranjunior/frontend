@@ -56,17 +56,16 @@ export const List = styled.ul`
   
 `;
 export const Element = styled.li`
-  border-bottom: 1px solid #ccc;
-  margin: 0px 5px;
-  height: 3.5em;
+  height: 3em;
   display: flex;
   justify-content: start;
   flex-direction: row;
   align-content: center;
   align-items: center;
   font-family: 'Roboto';
-  font-weight: 300;
+  font-weight: 400;
   color: #333;
+  font-size: 14px;
   @media only screen and (max-width: 700px) {
     display: none
   }
@@ -94,4 +93,8 @@ export const UserEmailSpace = styled.div`
   font-family: "Roboto";
   color: darkgray;
   font-size: small;
+`;
+export const Hr = styled.hr`
+  margin: 0 15px;
+  border: 0.5px solid #eee
 `;

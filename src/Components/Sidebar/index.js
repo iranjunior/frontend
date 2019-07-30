@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { IconContext } from 'react-icons';
 import Avatar from '@material-ui/core/Avatar';
-import { MdPieChartOutlined, MdCast, MdShowChart, MdInsertChart, MdLocalHospital } from 'react-icons/md'
-import {Sidebars, List, Element, AvatarSpace, InfoUser, UserNameSpace, UserEmailSpace, useStyles } from './styles';
+import { MdPieChartOutlined, MdCast, MdShowChart, MdInsertChart, MdLocalHospital, MdHealing, MdArchive, MdContacts } from 'react-icons/md'
+import {Sidebars, List, Element, AvatarSpace, InfoUser, UserNameSpace, UserEmailSpace, Hr,  useStyles } from './styles';
 
 
 const Sidebar = ({ user }) => {
@@ -49,11 +49,30 @@ const Sidebar = ({ user }) => {
                 </IconContext.Provider>
                 Estatisticas
             </Element>
+            <Hr/>
             <Element>
                 <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
                     <MdLocalHospital />
                 </IconContext.Provider>
                 Hospitais
+            </Element>
+            <Element>
+                <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
+                    <MdHealing />
+                </IconContext.Provider>
+                Especialidade
+            </Element>
+            <Element>
+                <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
+                    <MdArchive />
+                </IconContext.Provider>
+                Historico
+            </Element>
+            <Element>
+                <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
+                    <MdContacts />
+                </IconContext.Provider>
+                Contato
             </Element>
         </List>
     </Sidebars>

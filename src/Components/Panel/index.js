@@ -6,7 +6,7 @@ import { MdWhatshot } from 'react-icons/md'
 import { IconContext } from 'react-icons';
 
 
-import { Container, Card, Hospital, Vacancies, Specialities, Icon } from './styles';
+import { Container, Card, Hospital, Vacancies, Specialities, Icon, Name } from './styles';
 
 const loadVacancies = (vacancies, dispatch) => {
 
@@ -42,44 +42,20 @@ const Panel = ({ vacancies , dispatch}) => {
                 <Hospital> Hospital Agamenon Magalhães</Hospital>
                 <Specialities>
                     <Icon>
-                        <IconContext.Provider value={{color: '#fff', size: '3em'}}>
+                        <IconContext.Provider value={{color: '#fff', size: '2em', style:{margin: '13px'}}}>
                             <MdWhatshot />
                         </IconContext.Provider>    
                     </Icon>
                     Clinica
                 </Specialities>
-                <Vacancies>30</Vacancies>
+                <Vacancies>
+                    30
+                    <Name>
+                        Leitos
+                    </Name>
+                </Vacancies>
             </Card>
-            <Card>
-                <Hospital>Teste 2</Hospital>
-                <Specialities>Clinica</Specialities>
-                <Vacancies>20</Vacancies>
-            </Card>
-            <Card>
-                <Hospital>Teste 3</Hospital>
-                <Specialities>Clinica</Specialities>
-                <Vacancies>3</Vacancies>
-            </Card>
-            <Card>
-                <Hospital>Teste 4</Hospital>
-                <Specialities>Clinica</Specialities>
-                <Vacancies>6</Vacancies>
-            </Card>
-            <Card>
-                <Hospital>Teste 5 </Hospital>
-                <Specialities>Clinica</Specialities>
-                <Vacancies>3</Vacancies>
-            </Card>
-            <Card>
-                <Hospital>Teste 6</Hospital>
-                <Specialities>Clinica</Specialities>
-                <Vacancies>5</Vacancies>
-            </Card>
-            <Card>
-                <Hospital> Teste 7</Hospital>
-                <Specialities>Clinica</Specialities>
-                <Vacancies>9</Vacancies>
-            </Card>
+            
         </Container>
     )
 
