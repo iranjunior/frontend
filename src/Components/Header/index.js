@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
 import { IconContext } from 'react-icons';

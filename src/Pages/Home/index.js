@@ -1,6 +1,7 @@
 import React , { useEffect } from 'react';
 import Header from '../../Components/Header'
 import Sidebar from '../../Components/Sidebar'
+import Panel from '../../Components/Panel'
 import { Container }  from './styles'
 import { connect } from 'react-redux'
 import { LOADED_USER } from '../../Constants/actionsType'
@@ -9,7 +10,7 @@ import { LOADED_USER } from '../../Constants/actionsType'
 import api , { config } from '../../Services/api';
 
 const loadUser = ( user, dispatch) => {
-        if(user === null || user === undefined || Object.keys(user).length === 0){
+        if(user === null || user === undefined || Object.keys(user.user).length === 0){
          api.get(`/user`, config)
                 .then(response => { 
                         if(response.status === 200)
@@ -35,6 +36,7 @@ const Home = ({user, dispatch}) => {
         <Container>
                 <Header></Header>
                 <Sidebar></Sidebar>
+                <Panel>\</Panel>
         </Container>
 
 

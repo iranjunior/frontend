@@ -26,7 +26,7 @@ export const Headers = styled.header`
     
         width: 100%;
         background: linear-gradient(45deg, #0288d1 0%, #26c6da 100%);
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         z-index: 10;

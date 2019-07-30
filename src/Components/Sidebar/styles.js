@@ -27,8 +27,9 @@ export const useStyles = makeStyles({
 export const Sidebars = styled.div`
   @media only screen and (min-width: 700px) {
     min-height: 100vh;
-    max-width: 20%;
-    position: relative;
+    box-shadow: 1px 1px 7px 1px rgba(10,10,10,0.3);
+    width: 250px;
+    position: fixed;
     top: 40px;
     z-index: -10;
     display: flex;
@@ -37,13 +38,14 @@ export const Sidebars = styled.div`
   }
 
   @media only screen and (max-width: 700px) {
-    max-width: 0%;
+    width: 0%;
+    position: relative;
   }
-  -webkit-transition: max-width 700ms ease;
-  -moz-transition: max-width 700ms ease;
-  -ms-transition: max-width 700ms ease;
-  -o-transition: max-width 700ms ease;
-  transition: max-width 700ms ease;
+  -webkit-transition: width 700ms ease;
+  -moz-transition: width 700ms ease;
+  -ms-transition: width 700ms ease;
+  -o-transition: width 700ms ease;
+  transition: width 700ms ease;
 `;
 export const List = styled.ul`
   list-style: none;
@@ -51,18 +53,23 @@ export const List = styled.ul`
   min-width: 100%;
   padding: 0;
   border-right: 1px solid #ccc;
+  
 `;
 export const Element = styled.li`
   border-bottom: 1px solid #ccc;
   margin: 0px 5px;
   height: 3.5em;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-direction: row;
   align-content: center;
+  align-items: center;
   font-family: 'Roboto';
   font-weight: 300;
   color: #333;
+  @media only screen and (max-width: 700px) {
+    display: none
+  }
 `;
 export const AvatarSpace = styled.li`
   border-bottom: 1px solid #ccc;
@@ -71,6 +78,9 @@ export const AvatarSpace = styled.li`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  @media only screen and (max-width: 700px) {
+    display: none
+  }
 `;
 export const InfoUser = styled.div`
   height: 4em;

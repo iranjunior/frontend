@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { IconContext } from 'react-icons';
 import Avatar from '@material-ui/core/Avatar';
-import { MdPieChartOutlined } from 'react-icons/md'
+import { MdPieChartOutlined, MdCast, MdShowChart, MdInsertChart, MdLocalHospital } from 'react-icons/md'
 import {Sidebars, List, Element, AvatarSpace, InfoUser, UserNameSpace, UserEmailSpace, useStyles } from './styles';
 
 
 const Sidebar = ({ user }) => {
     const classes = useStyles();
     useEffect(() => {
+        console.log(user)
     });
     return (
     <Sidebars>
@@ -17,29 +18,41 @@ const Sidebar = ({ user }) => {
                 <Avatar alt='default' src='https://picsum.photos/200/300' className={classes.avatar} />
                 <InfoUser>
                     <UserNameSpace>
-                        Iran Junior
+                        {user.username}
                     </UserNameSpace>
                     <UserEmailSpace>
-                        iranjunior94@gmail.com
+                        {user.email}
                     </UserEmailSpace>
                 </InfoUser>
             </AvatarSpace>
             <Element>
-                 <IconContext.Provider value={{color: 'darkgray' , size:'1em' }}>
+                 <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
                     <MdPieChartOutlined />
                 </IconContext.Provider>
                 Painel de Vagas
             </Element>
             <Element>
+                <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
+                    <MdCast />
+                </IconContext.Provider>
                 Visão Geral
             </Element>
             <Element>
+                <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
+                    <MdShowChart />
+                </IconContext.Provider>
                 Monitoramento
             </Element>
             <Element>
+                <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
+                    <MdInsertChart />
+                </IconContext.Provider>
                 Estatisticas
             </Element>
             <Element>
+                <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
+                    <MdLocalHospital />
+                </IconContext.Provider>
                 Hospitais
             </Element>
         </List>

@@ -1,15 +1,15 @@
 import { 
-    LOADED_USER
+    LOADED_VACANCIES
 } from "../Constants/actionsType"
 
 
-export default (state = {user: {}}, action) =>{
+export default (state = {vacancies: {}}, action) =>{
 
     switch (action.type) {
-        case LOADED_USER:
+        case LOADED_VACANCIES:
             return{
                 ...state,
-                user: action.user
+                vacancies: action.vacancies
             }
         default:
             return state;
