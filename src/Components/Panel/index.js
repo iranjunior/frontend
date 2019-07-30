@@ -36,24 +36,30 @@ const Panel = ({ vacancies , dispatch}) => {
 
     return (
         <Container>
-            <Card>
-                <Hospital> Hospital Agamenon Magalhães</Hospital>
-                <Specialities>
-                    <Icon>
-                        <IconContext.Provider value={{color: '#fff', size: '2em', style:{margin: '13px'}}}>
-                            <MdWhatshot />
-                        </IconContext.Provider>    
-                    </Icon>
-                    Clinica
-                </Specialities>
-                <Vacancies>
-                    30
-                    <Name>
-                        Leitos
-                    </Name>
-                </Vacancies>
-            </Card>
-            
+            {
+                vacancies.map(el => {
+                  return(
+
+                      <Card>
+                        <Hospital>{el.hospital}</Hospital>
+                        <Specialities>
+                            <Icon>
+                                <IconContext.Provider value={{color: '#fff', size: '2em', style:{margin: '13px'}}}>
+                                    <MdWhatshot />
+                                </IconContext.Provider>
+                            </Icon>
+                            {el.speciality}
+                        </Specialities>
+                        <Vacancies>
+                            {el.vacancy}
+                            <Name>
+                                Leitos
+                            </Name>
+                        </Vacancies>
+                    </Card>                    
+                      )}  
+                )
+            }
         </Container>
     )
 

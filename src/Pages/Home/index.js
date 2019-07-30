@@ -23,7 +23,7 @@ const loadUser = ( user, dispatch) => {
         }
         
     }
-    
+
 
 const Home = ({user, dispatch}) => {
         

@@ -3,7 +3,7 @@ import {
 } from "../Constants/actionsType"
 
 
-export default (state = {vacancies: {}}, action) =>{
+export default (state = {vacancies: []}, action) =>{
 
     switch (action.type) {
         case LOADED_VACANCIES:
