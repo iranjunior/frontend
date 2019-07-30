@@ -53,7 +53,7 @@ export const Specialities = styled.div`
   color: #fff;
 `;
 export const Icon = styled.div`
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   margin-bottom: 20px;
   height: 50px;

@@ -11,11 +11,9 @@ import { Container, Card, Hospital, Vacancies, Specialities, Icon, Name } from '
 const loadVacancies = (vacancies, dispatch) => {
 
 if(vacancies === null || vacancies === undefined || Object.keys(vacancies).length === 0){
-    console.log('Entrou aqui');
     api.get('/hospitals', config)
     .then(response =>{
         if(response.status === 200){
-            console.log(response);
             dispatch({
                 type: LOADED_VACANCIES,
                 vacancies: response.data.hospitals

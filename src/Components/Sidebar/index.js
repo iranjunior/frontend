@@ -9,7 +9,6 @@ import {Sidebars, List, Element, AvatarSpace, InfoUser, UserNameSpace, UserEmail
 const Sidebar = ({ user }) => {
     const classes = useStyles();
     useEffect(() => {
-        console.log(user)
     });
     return (
     <Sidebars>

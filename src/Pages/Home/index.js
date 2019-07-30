@@ -28,7 +28,6 @@ const loadUser = ( user, dispatch) => {
 const Home = ({user, dispatch}) => {
         
     useEffect(() => {
-        console.log(user)
         loadUser(user , dispatch)
     });
 
