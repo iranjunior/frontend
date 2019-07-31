@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import  api, { config } from '../../Services/api';
 import  { LOADED_VACANCIES } from '../../Constants/actionsType';
-import { MdWhatshot } from 'react-icons/md'
+ //import { MdWhatshot } from 'react-icons/md'
 import { IconContext } from 'react-icons';
 
-
-import { Container, Hospital, Vacancies, Specialities, Icon, Name, CardStyle } from './styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import { Container, Hospital, Vacancies, Specialities, Icon, Name, Card, FilterField, FilterActives, FilterAdd, FilterOrder, PanelField } from './styles';
 
 const loadVacancies = (vacancies, dispatch) => {
 
@@ -36,16 +37,25 @@ const Panel = ({ vacancies , dispatch}) => {
 
     return (
         <Container>
+            <FilterField>
+                <FilterActives>
+                </FilterActives>
+                <FilterAdd>
+                </FilterAdd>
+                <FilterOrder>
+                </FilterOrder>
+            </FilterField>
+            <PanelField>
             {
                 vacancies.map(el => {
-                  return(
-
-                      <CardStyle vacancies={el.vacancy} key={el.key.toString()}>
+                    return(
+                        
+                        <Card vacancies={el.vacancy} key={el.key.toString()}>
                         <Hospital>{el.hospital}</Hospital>
                         <Specialities>
                             <Icon>
                                 <IconContext.Provider value={{color: '#fff', size: '2em', style:{margin: '13px'}}}>
-                                    <MdWhatshot />
+                                   
                                 </IconContext.Provider>
                             </Icon>
                             {el.speciality}
@@ -56,10 +66,11 @@ const Panel = ({ vacancies , dispatch}) => {
                                 Leitos
                             </Name>
                         </Vacancies>
-                    </CardStyle>                    
+                    </Card>                    
                       )}  
-                )
+                      )
             }
+            </PanelField>
         </Container>
     )
 

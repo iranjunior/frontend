@@ -66,6 +66,10 @@ export const Element = styled.li`
   font-weight: 400;
   color: #333;
   font-size: 14px;
+  &:hover{
+    background: rgba(0,0,0, 0.08);
+    cursor: pointer;
+  }
   @media only screen and (max-width: 700px) {
     display: none
   }
@@ -97,4 +101,7 @@ export const UserEmailSpace = styled.div`
 export const Hr = styled.hr`
   margin: 0 15px;
   border: 0.5px solid #eee
+`;
+export const Link = styled.a`
+  text-decoration: none;
 `;

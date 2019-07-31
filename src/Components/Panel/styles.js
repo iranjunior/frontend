@@ -1,4 +1,12 @@
-import styled from "styled-components";
+import React from "react";
+import styled, { css } from "styled-components";
+import {
+  MdFavorite,
+  MdDirectionsWalk,
+  MdPerson,
+  MdAccessibility,
+  MdSpa
+} from "react-icons/md";
 const nivelVacancies = {
   shadow: {
     baixo: "1 6px 20px 0 rgba(244, 143, 177, 0.5)",
@@ -12,65 +20,73 @@ const nivelVacancies = {
     alto: "linear-gradient(45deg, #43A047 0%, #1de9b6 100%)"
   }
 };
-export const CardStyle = styled.div(props => {
-    let nivelVacanciesColor = '';
-    let nivelVacanciesColorShadow = '';
-  if (props.vacancies < 4) {
-    nivelVacanciesColor = nivelVacancies.card.baixo;
-    nivelVacanciesColorShadow = nivelVacancies.shadow.baixo;
-  } else if (props.vacancies < 7) {
-    nivelVacanciesColor = nivelVacancies.card.medio;
-    nivelVacanciesColorShadow = nivelVacancies.shadow.medio;
-  } else {
-    nivelVacanciesColor = nivelVacancies.card.alto;
-    nivelVacanciesColorShadow = nivelVacancies.shadow.alto;
-  }
-  return {
-    borderRadius: "3px",
-    width: "250px",
-    height: "150px",
-    boxShadow: nivelVacanciesColorShadow,
-    margin: "20px 10px",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "start",
-    alignItems: "start",
-    flexWrap: "wrap",
-    background: nivelVacanciesColor
-  };
-});
-
+export const iconsSpecialities = {
+  Cardiacos: <MdFavorite />,
+  Traumato: <MdDirectionsWalk />,
+  Urologia: <MdPerson />,
+  Clinica: <MdAccessibility />,
+  Ginecologia: <MdSpa />
+};
 export const Container = styled.div`
   position: relative;
-  left: 320px;
-  width: 80%;
+  width: 100%;
+  margin-left: 250px;
+  margin-top: 60px;
   display: flex;
-  flex-direction: row;
-  top: 60px;
+  flex-direction: row;;
   justify-content: start;
   flex-wrap: wrap;
   @media only screen and (max-width: 700px) {
     width: 100%;
     left: 0px;
+    margin-left: 0px;
   }
-
+  @media only screen and (min-width: 993px){
+    width: 82%;
+  }
 `;
 export const Card = styled.div`
   border-radius: 3px;
   width: 250px;
   height: 150px;
-  box-shadow: 0 6px 20px 0 rgba(255, 111, 0, 0.3);
+  ${props => {
+    if (props.vacancies < 4)
+      return css`
+        box-shadow: ${nivelVacancies.shadow.baixo};
+      `;
+    else if (props.vacancies < 7)
+      return css`
+        box-shadow: ${nivelVacancies.shadow.medio};
+      `;
+    else
+      return css`
+        box-shadow: ${nivelVacancies.shadow.alto};
+      `;
+  }}
   margin: 20px 10px;
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-items: start;
   flex-wrap: wrap;
-  background: linear-gradient(45deg, #ff6f00 0%, #ffca28 100%);
-  
+  ${props => {
+    if (props.vacancies < 4)
+      return css`
+        background: ${nivelVacancies.card.baixo};
+      `;
+    else if (props.vacancies < 7)
+      return css`
+        background: ${nivelVacancies.card.medio};
+      `;
+    else
+      return css`
+        background: ${nivelVacancies.card.alto};
+      `;
+  }}
+
   @media only screen and (max-width: 700px) {
     width: 80%;
-    margin: auto;
+    margin: 20px auto;
   }
 `;
 export const Hospital = styled.div`
@@ -80,7 +96,7 @@ export const Hospital = styled.div`
   text-align: right;
   font-family: "Roboto";
   color: #fff;
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 10px;
   margin-right: 7px;
 `;
@@ -99,7 +115,7 @@ export const Specialities = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-size: 12px;
+  font-size: 15px;
   color: #fff;
 `;
 export const Icon = styled.div`
@@ -111,4 +127,32 @@ export const Icon = styled.div`
 `;
 export const Name = styled.p`
   font-size: 12px;
+`;
+export const FilterField = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+`;
+export const FilterActives = styled.div`
+  width: 40%;
+  height: 100%;
+`;
+export const FilterAdd = styled.div`
+  width: 30%;
+  height: 100%;
+`;
+export const FilterOrder = styled.div`
+  width: 30%;
+  height: 100%;
+`;
+export const PanelField = styled.div`
+  width: 100%
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 0 20px;
 `;

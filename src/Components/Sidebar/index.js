@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { IconContext } from 'react-icons';
 import Avatar from '@material-ui/core/Avatar';
 import { MdPieChartOutlined, MdCast, MdShowChart, MdInsertChart, MdLocalHospital, MdHealing, MdArchive, MdContacts } from 'react-icons/md'
-import { Sidebars, List, Element, AvatarSpace, InfoUser, UserNameSpace, UserEmailSpace, Hr,  useStyles } from './styles';
+import { Sidebars, List, Element, AvatarSpace, InfoUser, UserNameSpace, UserEmailSpace, Hr, useStyles } from './styles';
 
 
 const Sidebar = ({ user }) => {
