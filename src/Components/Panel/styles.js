@@ -36,6 +36,7 @@ export const Container = styled.div`
   flex-direction: row;;
   justify-content: start;
   flex-wrap: wrap;
+  font-family: "Roboto", "sans-serif";
   @media only screen and (max-width: 700px) {
     width: 100%;
     left: 0px;
@@ -47,7 +48,7 @@ export const Container = styled.div`
 `;
 export const Card = styled.div`
   border-radius: 3px;
-  width: 250px;
+  width: 22%;
   height: 150px;
   ${props => {
     if (props.vacancies < 4)
@@ -96,9 +97,12 @@ export const Hospital = styled.div`
   text-align: right;
   font-family: "Roboto";
   color: #fff;
-  font-size: 15px;
+  font-size: 13px;
   margin-top: 10px;
   margin-right: 7px;
+  @media only screen and (min-width: 1300px){
+    font-size: 16px;
+  }
 `;
 export const Vacancies = styled.div`
   width: 50%;
