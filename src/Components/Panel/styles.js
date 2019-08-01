@@ -1,5 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
+
 import {
   MdFavorite,
   MdDirectionsWalk,
@@ -7,6 +9,17 @@ import {
   MdAccessibility,
   MdSpa
 } from "react-icons/md";
+export const useStyles = makeStyles({
+  formcontrol: {
+    width: "80%"
+  },
+  chips: {
+    margin: 10
+  },
+  noMargin:{
+    margin: 0
+  }
+});
 const nivelVacancies = {
   shadow: {
     baixo: "1 6px 20px 0 rgba(244, 143, 177, 0.5)",
@@ -33,7 +46,7 @@ export const Container = styled.div`
   margin-left: 250px;
   margin-top: 60px;
   display: flex;
-  flex-direction: row;;
+  flex-direction: row;
   justify-content: start;
   flex-wrap: wrap;
   font-family: "Roboto", "sans-serif";
@@ -42,7 +55,7 @@ export const Container = styled.div`
     left: 0px;
     margin-left: 0px;
   }
-  @media only screen and (min-width: 993px){
+  @media only screen and (min-width: 993px) {
     width: 82%;
   }
 `;
@@ -100,7 +113,7 @@ export const Hospital = styled.div`
   font-size: 13px;
   margin-top: 10px;
   margin-right: 7px;
-  @media only screen and (min-width: 1300px){
+  @media only screen and (min-width: 1300px) {
     font-size: 16px;
   }
 `;
@@ -134,23 +147,37 @@ export const Name = styled.p`
 `;
 export const FilterField = styled.div`
   width: 100%;
-  height: 100px;
   display: flex;
   justify-content: start;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 `;
 export const FilterActives = styled.div`
   width: 40%;
   height: 100%;
+  @media only screen and (max-width: 700px){
+    width: 100%;
+    height: auto;
+    margin-left: 20px;
+  }
 `;
 export const FilterAdd = styled.div`
   width: 30%;
   height: 100%;
+  @media only screen and (max-width: 700px){
+    width: 100%;
+    height: auto;
+    margin-left: 20px;
+  }
 `;
 export const FilterOrder = styled.div`
   width: 30%;
   height: 100%;
+  @media only screen and (max-width: 700px){
+    width: 100%;
+    height: auto;
+    margin-left: 20px;
+  }
 `;
 export const PanelField = styled.div`
   width: 100%
@@ -160,3 +187,24 @@ export const PanelField = styled.div`
   margin: auto;
   padding: 0 20px;
 `;
+export const LabelSelect = styled.div`
+  width: 100%;
+  line-height: 3;
+`;
+export const Tittle = styled.span`
+  margin-left: 30px;
+  color: darkgray;
+  :nth-child(2){
+    margin-left: 0px;
+  }
+  :nth-child(3){
+    margin-left: 0px; 
+  }
+  @media only screen and (max-width: 700px){
+    margin: 0;
+  }
+  
+`;
+export const Fixed = styled.div`
+  display: fixed
+`
