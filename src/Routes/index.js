@@ -7,9 +7,6 @@ import history from './history'
 
 import Home  from '../Pages/Home';
 import Login  from '../Pages/Login';
-//import isAuthenticate  from '../Services/auth';
-
-//console.log(isAuthenticate(2));
 
 
 const Routes = (  ) => {

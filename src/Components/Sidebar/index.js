@@ -1,15 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
+import { CHANGE_ROUTE } from '../../Constants/actionsType'
 import { IconContext } from 'react-icons';
 import Avatar from '@material-ui/core/Avatar';
 import { MdPieChartOutlined, MdCast, MdShowChart, MdInsertChart, MdLocalHospital, MdHealing, MdArchive, MdContacts } from 'react-icons/md'
 import { Sidebars, List, Element, AvatarSpace, InfoUser, UserNameSpace, UserEmailSpace, Hr, useStyles } from './styles';
 
+const handleChangeRoute = (route) => ({
+    type: CHANGE_ROUTE,
+    route
+})
 
-const Sidebar = ({ user }) => {
+const Sidebar = ({ user, route, dispatch }) => {
     const classes = useStyles();
     useEffect(() => {
     });
+
     return (
     <Sidebars>
         <List>
@@ -24,25 +30,25 @@ const Sidebar = ({ user }) => {
                     </UserEmailSpace>
                 </InfoUser>
             </AvatarSpace>
-            <Element>
+            <Element onClick={()=>{dispatch(handleChangeRoute('panel'))}}>
                  <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
                     <MdPieChartOutlined />
                 </IconContext.Provider>
                 Painel de Vagas
             </Element>
-            <Element>
+            <Element onClick={()=>{dispatch(handleChangeRoute('map'))}}>
                 <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
                     <MdCast />
                 </IconContext.Provider>
                 Visão Geral
             </Element>
-            <Element>
+            <Element onClick={()=>{dispatch(handleChangeRoute('monitor'))}}>
                 <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
                     <MdShowChart />
                 </IconContext.Provider>
                 Monitoramento
             </Element>
-            <Element>
+            <Element onClick={()=>{dispatch(handleChangeRoute('statistic'))}}>
                 <IconContext.Provider value={{color: 'darkgray' , size:'1.5em' ,style: {margin: ' 0 20px'} }}>
                     <MdInsertChart />
                 </IconContext.Provider>
@@ -78,4 +84,4 @@ const Sidebar = ({ user }) => {
 
 )};
 
-export default connect(state => ({...state, user: state.user.user}))(Sidebar);
+export default connect(state => ({...state, user: state.user.user, route: state.routes.route}))(Sidebar);

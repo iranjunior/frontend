@@ -1,7 +1,7 @@
 import React , { useEffect } from 'react';
 import Header from '../../Components/Header'
 import Sidebar from '../../Components/Sidebar'
-import Panel from '../../Components/Panel'
+import SwitchPanel from '../../Routes/Switch'
 import { connect } from 'react-redux'
 import { LOADED_USER } from '../../Constants/actionsType'
 //import { Container } from './styles'
@@ -32,9 +32,9 @@ const Home = ({user, dispatch}) => {
 
         return (
         <>
-                <Header></Header>
-                <Sidebar></Sidebar>
-                <Panel>\</Panel>
+                <Header/>
+                <Sidebar/>
+                <SwitchPanel></SwitchPanel>
         </>
 
 
