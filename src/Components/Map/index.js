@@ -1,7 +1,9 @@
 import React from 'react';
-
+import { GoogleApiWrapper } from 'google-maps-react'
 import { Container } from './styles';
 
-const Map = () => <div />;
+const Map = () => {
+        
+};
 
 export default Map;
