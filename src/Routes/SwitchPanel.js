@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Panel from '../Components/Panel';
-import Map from '../Components/Map';
+import Map from '../Components/Maps';
 import Monitor from '../Components/Monitor';
 import { connect } from 'react-redux'
 // import { Container } from './styles';

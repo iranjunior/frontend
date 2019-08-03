@@ -1,7 +1,7 @@
 import React , { useEffect } from 'react';
 import Header from '../../Components/Header'
 import Sidebar from '../../Components/Sidebar'
-import SwitchPanel from '../../Routes/Switch'
+import SwitchPanel from '../../Routes/SwitchPanel'
 import { connect } from 'react-redux'
 import { LOADED_USER } from '../../Constants/actionsType'
 //import { Container } from './styles'

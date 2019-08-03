@@ -1,9 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-position: relative;
+position: absolute;
+  top: 60px;
+  left: 250px;
   width: 100%;
-  margin-left: 250px;
+  margin-left: 20px;
   margin-top: 60px;
   display: flex;
   flex-direction: row;
@@ -19,4 +21,7 @@ position: relative;
     width: 82%;
   }
   
+`;
+export const positionMap = css`
+  position: fixed;
 `;
