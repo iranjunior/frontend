@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
-position: absolute;
+  position: absolute;
   top: 60px;
   left: 250px;
   width: 100%;
@@ -20,8 +20,13 @@ position: absolute;
   @media only screen and (min-width: 993px) {
     width: 82%;
   }
-  
 `;
-export const positionMap = css`
-  position: fixed;
+
+export const FieldMap = styled.div`
+  position: relative;
+  width: 85%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #babaca;
+  border-radius: 10px;
 `;
