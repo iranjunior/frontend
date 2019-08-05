@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   position: relative;
+=======
+import styled from "styled-components";
+
+export const Container = styled.div`
+  position: absolute;
+  top: 60px;
+  left: 250px;
+>>>>>>> 9bf2d3d83bcf2c07af80226ad65fa7158ef54b36
   width: 100%;
   margin-left: 250px;
   margin-top: 60px;
@@ -19,8 +28,14 @@ export const Container = styled.div`
     width: 82%;
   }
 `;
-export const positionMap = css`
-  position: fixed;
+
+export const FieldMap = styled.div`
+  position: relative;
+  width: 85%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #babaca;
+  border-radius: 10px;
 `;
 export const FieldFilter = styled.div`
   height: 150px;
