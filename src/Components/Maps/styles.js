@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-import styled, { css } from "styled-components";
-
-export const Container = styled.div`
-  position: relative;
-=======
 import styled from "styled-components";
 
 export const Container = styled.div`
   position: absolute;
   top: 60px;
   left: 250px;
->>>>>>> 9bf2d3d83bcf2c07af80226ad65fa7158ef54b36
   width: 100%;
   margin-left: 250px;
   margin-top: 60px;
