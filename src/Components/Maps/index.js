@@ -17,7 +17,24 @@ import { Container, FieldMap } from './styles';
     withGoogleMap
   )((props) =>
  {
-    const data = [new window.google.maps.LatLng( -8.3603262, -37.6392343)];
+    const data = [
+      new window.google.maps.LatLng( -8.3603262, -37.6392343)
+    ];
+    
+  const gradient =[
+      'rgba(0, 255, 0, 0)',
+      'rgba(0, 255, 0, 0.1)',
+      'rgba(0, 255, 0, 0.2)',
+      'rgba(0, 255, 0, 0.3)',
+      'rgba(0, 255, 0, 0.4)',
+      'rgba(0, 255, 0, 0.5)',
+      'rgba(0, 255, 0, 0.6)',
+      'rgba(0, 255, 0, 0.7)',
+      'rgba(0, 255, 0, 0.8)',
+      'rgba(0, 255, 0, 0.9)',
+      'rgba(0, 255, 0, 1)'
+          
+    ]
      return(
          
          <GoogleMap
@@ -27,7 +44,7 @@ import { Container, FieldMap } from './styles';
          >
       <HeatmapLayer 
         defaultData={data}
-        defaultOptions={{radius: 300}}
+        defaultOptions={{radius: 30, gradient}}
         />
     </GoogleMap>
         )
