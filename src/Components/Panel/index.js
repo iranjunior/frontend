@@ -6,7 +6,8 @@ import {
   SET_SPECIALITIES,
   LOADED_SPECIALITIES,
   UIDESIGN_CLICKED_SELECT_ORDER_VACANCIES,
-  ORDER_VACANCIES
+  ORDER_VACANCIES,
+  LOADED_LOCATIONS
 } from "../../Constants/actionsType";
 //import { MdWhatshot } from 'react-icons/md'
 import { IconContext } from "react-icons";
