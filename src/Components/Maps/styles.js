@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: absolute;
-  top: 60px;
-  left: 250px;
+  position: relative;
   width: 100%;
-  margin-left: 20px;
+  margin-left: 250px;
   margin-top: 60px;
   display: flex;
   flex-direction: row;
@@ -29,4 +27,15 @@ export const FieldMap = styled.div`
   padding: 20px;
   border: 1px solid #babaca;
   border-radius: 10px;
+`;
+export const FieldFilter = styled.div`
+  height: 150px;
+  width: 100%;
+`;
+export const MapField = styled.div`
+  width: 85%;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #babaca;
+  border-radius: 5px;
 `;
