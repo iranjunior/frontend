@@ -90,7 +90,7 @@ export default [
 
 export const condition = {
 
-  low: [
+  high: [
     "rgba(51,242,0, 0)",
     "rgba(171,242,0, 1)",
     "rgba(161,242,0, 1)",
@@ -116,7 +116,7 @@ export const condition = {
     "rgba(255,235,0, 1)",
     "rgba(255,245,0, 1)"
   ],
-  high: [
+  low: [
     "rgba(255,42,0, 0)",
     "rgba(255,42,0, 1)",
     "rgba(255,52,0, 1)",
