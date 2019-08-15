@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   position: relative;
@@ -31,6 +31,9 @@ export const FieldMap = styled.div`
 export const FieldFilter = styled.div`
   height: 150px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const MapField = styled.div`
   width: 85%;
@@ -39,3 +42,10 @@ export const MapField = styled.div`
   border: 1px solid #babaca;
   border-radius: 5px;
 `;
+export const Label = styled.h3`
+
+`;
+export const inputText = styled.input.attrs({
+  type: `text`,
+  placeHolder: `Pesquise uma especialidade`
+})``;

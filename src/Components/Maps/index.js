@@ -1,16 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compose, withProps } from "recompose";
+import TextField from '@material-ui/core/TextField';
+import Autosuggest from 'react-autosuggest';
+import match from 'autosuggest-highlight/match';
+import parse from 'autosuggest-highlight/parse';
+
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker
+  Circle
+  
 } from "react-google-maps";
-import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
 
-import mapStyles, { condition } from "./mapStyles";
-import { Container, FieldMap } from "./styles";
+import mapStyles from "./mapStyles";
+import { Container, FieldMap, FieldFilter } from "./styles";
 
 const Map = compose(
   withProps({
@@ -23,37 +28,32 @@ const Map = compose(
   withScriptjs,
   withGoogleMap
 )(props => {
-  //const data = props.locations.map(el => ({name: el.hospital, locations:[ new window.google.maps.LatLng(el.lat, el.lng)], speciality: el.speciality, vacancy: el.vacancy, key: el.key}));
-  let data = [...new Set(props.locations.map(el => el.hospital).sort())];
-  //const data = props.locations.map(el =>(new window.google.maps.LatLng( el.lat, el.lng)));
-  data = data.map(el => ({
+  
+  const data = props.locations.map(el => ({
     name: el,
     locations: {
 
-    lat:   props.locations
+    lat:   props.data
           .map(element => {
             return element.hospital === el ? element.lat : null;
           })
           .filter(element => element !== null)[0],
-     lng:   props.locations
+     lng:   props.data
           .map(element => {
             return element.hospital === el ? element.lng : null;
           })
           .filter(element => element !== null)[0]
         }
     ,
-    vacancy: props.locations
+    vacancy: props.data
       .map(element => {
         if (element.hospital === el) return element.vacancy;
       })
       .filter(element => element !== undefined)
       .reduce((hold, value) => hold + value)
   }));
-  // } ))
-  //console.log(props.locations.filter(element => {if(element.hospital === "Hospital Restauração") return element.vacancy}).reduce((hold, value, index) => ((hold + value) /index)) )
-  //console.log(props.locations.map(element => {if(element.hospital === "Hospital da Restauração") return element.vacancy }).filter(element => element!== undefined).reduce((hold, value) => hold + value))
-  //.reduce((hold, value, index) => ((hold + value) /index)) )
-  console.log(data);
+
+
   return (
     <GoogleMap
       defaultZoom={7.6}
@@ -62,40 +62,46 @@ const Map = compose(
     >
       {
         data.map(el =>(
-          <Marker 
-          position={el.locations}
-          defaultIcon={'https://developers.google.com/maps/documentation/javascript/examples/full/images/info-i_maps.png'}
+          <Circle 
+          key={el.name}
+          defaultCenter={el.locations}
+          defaultRadius={el.vacancy*1000}
+          defaultOptions={{
+            fillColor: el.vacancy < 7 ? `#ff5252`: el.vacancy < 20 ? `#ffca28`: `#43a047`,
+            fillOpacity: 0.3,
+            strokeColor:  el.vacancy < 7 ? `#ff5252`: el.vacancy < 20 ? `#ffca28`: `#43a047`,
+            strokeOpacity: 0.7
+          }}
           />
         ))
-        
-        /* data.map(el => (
-        <HeatmapLayer
-          key={el.name}
-          defaultData={el.locations}
-          defaultOptions={{
-            radius: el.vacancy < 3 ? 50: el.vacancy  < 20 ? 30: 20,
-            gradient:
-              el.vacancy < 3
-                ? condition.low
-                : el.vacancy < 20
-                ? condition.medium
-                : condition.high
-          } />
-      ))}*/}
-        
+      }
     </GoogleMap>
   );
 });
 
-const Maps = ({ vacancies }) => (
+const Maps = ({ locations, vacancies, specialities }) => {
+  const suggest = specialities.map(el => ({ speciality: el}))
+ 
+  return(
   <Container>
+     <FieldFilter>
+<TextField 
+  id="standard-password-input"
+  label="Selecione uma especialidade"
+  type="text"
+  autoComplete="current-password"
+  margin="normal"
+/>
+    </FieldFilter>
     <FieldMap>
-      <Map isMarkerShown locations={vacancies} />
+      <Map isMarkerShown locations={locations} data={vacancies}/>
     </FieldMap>
   </Container>
-);
-
+)
+}
 export default connect(state => ({
   ...state,
-  vacancies: state.vacancies.vacancies
+  vacancies: state.vacancies.vacancies,
+  specialities: state.specialities.specialities,
+  locations: state.hospitals.hospitals.name
 }))(Maps);

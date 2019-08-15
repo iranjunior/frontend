@@ -7,7 +7,8 @@ import {
   LOADED_SPECIALITIES,
   UIDESIGN_CLICKED_SELECT_ORDER_VACANCIES,
   ORDER_VACANCIES,
-  LOADED_LOCATIONS
+  LOADED_LOCATIONS,
+  SETTING_HOSPITALS_NAME
 } from "../../Constants/actionsType";
 //import { MdWhatshot } from 'react-icons/md'
 import { IconContext } from "react-icons";
@@ -51,6 +52,12 @@ const loadVacancies = (vacancies, dispatch) => {
             type: LOADED_VACANCIES,
             vacancies: response.data.hospitals
           });
+          
+          dispatch({
+            type: SETTING_HOSPITALS_NAME,
+            hospitals: [...new Set(response.data.hospitals.map(el => el.hospital).sort())]
+          });
+
         }
       })
       .catch(erro => {});
