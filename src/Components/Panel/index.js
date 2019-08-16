@@ -7,7 +7,6 @@ import {
   LOADED_SPECIALITIES,
   UIDESIGN_CLICKED_SELECT_ORDER_VACANCIES,
   ORDER_VACANCIES,
-  LOADED_LOCATIONS,
   SETTING_HOSPITALS_NAME
 } from "../../Constants/actionsType";
 //import { MdWhatshot } from 'react-icons/md'
@@ -35,7 +34,8 @@ import {
   PanelField,
   LabelSelect,
   Tittle,
-  useStyles
+  useStyles,
+  getIcons
 } from "./styles";
 
 const loadVacancies = (vacancies, dispatch) => {
@@ -239,11 +239,13 @@ const Panel = ({
                       value={{
                         color: "#fff",
                         size: "2em",
-                        style: { margin: "13px" }
+                        style: { margin: "10px" }
                       }}
-                    />
-                  </Icon>
+                    >
+                      {getIcons(el.speciality)}
+                    </IconContext.Provider>
                   {el.speciality}
+                  </Icon>
                 </Specialities>
                 <Vacancies>
                   {el.vacancy}
@@ -261,16 +263,20 @@ const Panel = ({
                       value={{
                         color: "#fff",
                         size: "2em",
-                        style: { margin: "13px" }
+                        style: { margin: "10px" }
                       }}
-                    />
-                  </Icon>
+                      >
+                      {getIcons(el.speciality)}
+
+                    </IconContext.Provider>
                   {el.speciality}
+                  </Icon>
                 </Specialities>
                 <Vacancies>
                   {el.vacancy}
                   <Name>Leitos</Name>
                 </Vacancies>
+                
               </Card>
             );
           }

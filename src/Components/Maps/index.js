@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import { connect } from "react-redux";
 import { compose, withProps } from "recompose";
-import TextField from '@material-ui/core/TextField';
-import Autosuggest from 'react-autosuggest';
-import match from 'autosuggest-highlight/match';
-import parse from 'autosuggest-highlight/parse';
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+
+
 
 import {
   withScriptjs,
@@ -28,7 +30,12 @@ const Map = compose(
   withScriptjs,
   withGoogleMap
 )(props => {
-  
+ const average = function(a){
+    var r = {mean: 0, variance: 0, deviation: 0}, t = a.length;
+    for(var m, s = 0, l = t; l--; s += a[l]);
+    for(m = r.mean = s / t, l = t, s = 0; l--; s += Math.pow(a[l] - m, 2));
+    return r.deviation = Math.sqrt(r.variance = s / t), r;
+}
   const data = props.locations.map(el => ({
     name: el,
     locations: {
@@ -45,15 +52,15 @@ const Map = compose(
           .filter(element => element !== null)[0]
         }
     ,
-    vacancy: props.data
-      .map(element => {
-        if (element.hospital === el) return element.vacancy;
+    vacancy: average(props.data
+      .map(function(element){
+        if(element.hospital === el && props.specialities === "") return element.vacancy;
+        if(element.hospital === el && element.speciality === props.specialities ) return element.vacancy;
       })
-      .filter(element => element !== undefined)
-      .reduce((hold, value) => hold + value)
+      .filter(element => element !== undefined)).mean
   }));
 
-
+  console.log(data);
   return (
     <GoogleMap
       defaultZoom={7.6}
@@ -65,11 +72,11 @@ const Map = compose(
           <Circle 
           key={el.name}
           defaultCenter={el.locations}
-          defaultRadius={el.vacancy*1000}
+          defaultRadius={el.vacancy*10000}
           defaultOptions={{
-            fillColor: el.vacancy < 7 ? `#ff5252`: el.vacancy < 20 ? `#ffca28`: `#43a047`,
+            fillColor: el.vacancy < 3 ? `#ff5252`: el.vacancy < 6 ? `#ffca28`: `#43a047`,
             fillOpacity: 0.3,
-            strokeColor:  el.vacancy < 7 ? `#ff5252`: el.vacancy < 20 ? `#ffca28`: `#43a047`,
+            strokeColor:  el.vacancy < 3 ? `#ff5252`: el.vacancy < 6 ? `#ffca28`: `#43a047`,
             strokeOpacity: 0.7
           }}
           />
@@ -80,24 +87,39 @@ const Map = compose(
 });
 
 const Maps = ({ locations, vacancies, specialities }) => {
-  const suggest = specialities.map(el => ({ speciality: el}))
- 
+  
+  const [speciality, setSpeciality] = useState("")
   return(
-  <Container>
-     <FieldFilter>
-<TextField 
-  id="standard-password-input"
-  label="Selecione uma especialidade"
-  type="text"
-  autoComplete="current-password"
-  margin="normal"
-/>
-    </FieldFilter>
-    <FieldMap>
-      <Map isMarkerShown locations={locations} data={vacancies}/>
-    </FieldMap>
-  </Container>
-)
+      <Container>
+        <FieldMap>
+        <FieldFilter>
+        <FormControl style={{width: `60%`}} >
+            <InputLabel htmlFor="select-speciality">
+              Selecione uma especialidade
+            </InputLabel>
+            <Select
+              value={speciality}
+              onChange={e => {
+                setSpeciality(e.target.value)
+              }}
+              inputProps={{
+                id: "select-speciality"
+              }}
+           
+            >
+              {specialities.map(el => (
+                <MenuItem key={el} value={el}>
+                  {el}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+        </FieldFilter>
+          <Map isMarkerShown specialities={speciality} locations={locations} data={vacancies}/>
+        </FieldMap>
+      </Container>
+  )
 }
 export default connect(state => ({
   ...state,

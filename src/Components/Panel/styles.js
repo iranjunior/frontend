@@ -7,7 +7,13 @@ import {
   MdDirectionsWalk,
   MdPerson,
   MdAccessibility,
-  MdSpa
+  MdSpa,
+  MdWhatshot,
+  MdBubbleChart,
+  MdChildFriendly,
+  MdHearing,
+  MdPregnantWoman,
+  MdRecordVoiceOver
 } from "react-icons/md";
 export const useStyles = makeStyles({
   formcontrol: {
@@ -33,12 +39,31 @@ const nivelVacancies = {
     alto: "linear-gradient(45deg, #43A047 0%, #1de9b6 100%)"
   }
 };
-export const iconsSpecialities = {
-  Cardiacos: <MdFavorite />,
-  Traumato: <MdDirectionsWalk />,
-  Urologia: <MdPerson />,
-  Clinica: <MdAccessibility />,
-  Ginecologia: <MdSpa />
+export const getIcons = (specialities) => {
+  if(specialities === "Cardiacos" ) 
+    return <MdFavorite />
+  if(specialities === "Traumato")
+  return <MdDirectionsWalk />
+  if(specialities === "Urologia")
+  return  <MdPerson />
+  if( specialities === "Clínica")
+  return  <MdAccessibility />
+  if(specialities === "Ginecologia")
+  return  <MdSpa />
+  if(specialities === "Queimaduras")
+  return  <MdWhatshot />
+  if(specialities === "Intoxicações")
+  return  <MdBubbleChart />
+  if(specialities === "Pediatria")
+  return  <MdChildFriendly />
+  if(specialities === "Otorrinolaringologia")
+  return  <MdHearing />
+  if(specialities === "Obstetrícia")
+  return  <MdPregnantWoman />
+  if(specialities === "Cardiologia")
+  return  <MdFavorite />
+  if(specialities === "Neurologia")
+  return  <MdRecordVoiceOver />
 };
 export const Container = styled.div`
   position: relative;
@@ -144,6 +169,7 @@ export const Icon = styled.div`
 `;
 export const Name = styled.p`
   font-size: 12px;
+  margin-top: 0px
 `;
 export const FilterField = styled.div`
   width: 100%;
@@ -208,3 +234,11 @@ export const Tittle = styled.span`
 export const Fixed = styled.div`
   display: fixed
 `
+export const FooterCard = styled.div`
+width: 100%;
+height: 17px;
+align-items: center;
+justify-content: start;
+margin-left: 4.2em;
+display: flex;
+`;
