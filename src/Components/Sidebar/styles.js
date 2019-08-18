@@ -1,33 +1,33 @@
-import styled from "styled-components";
-import { makeStyles } from "@material-ui/core/styles";
+import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles({
   avatar: {
     height: 100,
     width: 100,
-    margin: "auto"
+    margin: 'auto',
   },
   menu: {
-    top: 40
+    top: 40,
   },
   icon_button: {
     height: 30,
-    width: 30
+    width: 30,
   },
   bigAvatar: {
     margin: 10,
     width: 60,
-    height: 60
+    height: 60,
   },
   iconAvatarList: {
-    marginRight: 6
-  }
+    marginRight: 6,
+  },
 });
 
 export const Sidebars = styled.div`
   @media only screen and (min-width: 700px) {
     min-height: 100%;
-    box-shadow: 1px 1px 7px 1px rgba(10,10,10,0.3);
+    box-shadow: 1px 1px 7px 1px rgba(10, 10, 10, 0.3);
     width: 250px;
     position: fixed;
     top: 40px;
@@ -53,7 +53,7 @@ export const List = styled.ul`
   min-width: 100%;
   padding: 0;
   border-right: 1px solid #ccc;
-  
+
 `;
 export const Element = styled.li`
   height: 3em;
@@ -66,12 +66,12 @@ export const Element = styled.li`
   font-weight: 400;
   color: #333;
   font-size: 14px;
-  &:hover{
-    background: rgba(0,0,0, 0.08);
+  &:hover {
+    background: rgba(0, 0, 0, 0.08);
     cursor: pointer;
   }
   @media only screen and (max-width: 700px) {
-    display: none
+    display: none;
   }
 `;
 export const AvatarSpace = styled.li`
@@ -82,7 +82,7 @@ export const AvatarSpace = styled.li`
   flex-direction: column;
   flex-wrap: nowrap;
   @media only screen and (max-width: 700px) {
-    display: none
+    display: none;
   }
 `;
 export const InfoUser = styled.div`
@@ -90,17 +90,17 @@ export const InfoUser = styled.div`
 `;
 export const UserNameSpace = styled.div`
   text-align: center;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 `;
 export const UserEmailSpace = styled.div`
   text-align: center;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   color: darkgray;
   font-size: small;
 `;
 export const Hr = styled.hr`
   margin: 0 15px;
-  border: 0.5px solid #eee
+  border: 0.5px solid #eee;
 `;
 export const Link = styled.a`
   text-decoration: none;
