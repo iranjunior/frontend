@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: start;
   flex-wrap: wrap;
-  font-family: "Roboto", "sans-serif";
+  font-family: 'Roboto', 'sans-serif';
   @media only screen and (max-width: 700px) {
     width: 100%;
     left: 0px;
@@ -42,10 +42,8 @@ export const MapField = styled.div`
   border: 1px solid #babaca;
   border-radius: 5px;
 `;
-export const Label = styled.h3`
-
-`;
+export const Label = styled.h3``;
 export const inputText = styled.input.attrs({
-  type: `text`,
-  placeHolder: `Pesquise uma especialidade`
+  type: 'text',
+  placeHolder: 'Pesquise uma especialidade',
 })``;

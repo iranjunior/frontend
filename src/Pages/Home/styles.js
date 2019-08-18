@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`    
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: start;
-    font-family: 'Roboto';
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  font-family: 'Roboto';
 `;

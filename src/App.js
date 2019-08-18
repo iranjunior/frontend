@@ -1,14 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import Routes  from './Routes';
-
+import Routes from './Routes';
 
 function App() {
-  return (
-          <Routes />
-  
-  );
+  return <Routes />;
 }
 
-export default connect(state => ({}))(App);
+export default App;
