@@ -5,7 +5,7 @@ import {
   LOGGED_USER_GET_ID,
 } from '../Constants/actionsType';
 
-export default (state = {}, action) => {
+export default (state = { user: {} }, action) => {
   switch (action.type) {
     case EMAIL_USER:
       return {

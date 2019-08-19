@@ -6,7 +6,7 @@ import { IconContext } from 'react-icons';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
-// import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import MenuItem from '@material-ui/core/MenuItem';
 import {
   MdViewHeadline,
@@ -68,7 +68,7 @@ const StyledMenu = withStyles({
 const Header = ({ uiDesignHeader, dispatch }) => {
   const classes = useStyles();
   return (
-    <Headers>
+    <Headers data-test="header">
       <List>
         <Element>
           <Circle>
@@ -166,10 +166,12 @@ const Header = ({ uiDesignHeader, dispatch }) => {
     </Headers>
   );
 };
-
+Header.propTypes = {
+  uiDesignHeader: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
 const mapStateToProps = (state) => ({
   ...state,
-  user: state.user.user,
   uiDesignHeader: state.uiDesign.header,
 });
 export default connect(mapStateToProps)(Header);

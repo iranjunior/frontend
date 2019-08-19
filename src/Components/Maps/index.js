@@ -53,8 +53,6 @@ const Map = compose(
     ),
   }));
 
-  console.log(data);
-
   return (
     <GoogleMap
       defaultZoom={7.6}
