@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import PropTypes from 'prop-types';
 import {
   withScriptjs, withGoogleMap, GoogleMap, Circle,
 } from 'react-google-maps';
@@ -112,7 +113,11 @@ const Maps = ({ locations, vacancies, specialities }) => {
     </Container>
   );
 };
-
+Maps.propTypes = {
+  vacancies: PropTypes.array.isRequired,
+  specialities: PropTypes.array.isRequired,
+  locations: PropTypes.array.isRequired,
+};
 const mapStateToProps = (state) => ({
   ...state,
   vacancies: state.vacancies.vacancies,

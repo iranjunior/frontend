@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
 import { IconContext } from 'react-icons';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import {
   MdViewHeadline,
@@ -18,21 +18,34 @@ import {
   MdFirstPage,
   MdHelpOutline,
 } from 'react-icons/md';
-import { LOGGED_USER } from '../../Constants/actionsType';
+import { UIDESIGN_CLICKED_AVATAR_BUTTON, LOGGED_USER } from '../../Constants/actionsType';
 
 import {
   Headers, List, Element, Field, View, IconSpace, Circle, useStyles,
 } from './styles';
 
-const handleLogoutUser = (setAvatarButton, dispatch) => {
+const handleClickAvatar = (e) => ({
+  type: UIDESIGN_CLICKED_AVATAR_BUTTON,
+  uiDesign: e.currentTarget,
+});
+
+const handleClickAvatarClose = () => ({
+  type: UIDESIGN_CLICKED_AVATAR_BUTTON,
+  uiDesign: null,
+});
+const handleLogoutUser = (dispatch) => {
   dispatch({
     type: LOGGED_USER,
     token: null,
   });
-  setAvatarButton(null);
+  dispatch({
+    type: UIDESIGN_CLICKED_AVATAR_BUTTON,
+    uiDesign: null,
+  });
   localStorage.setItem('token', null);
   dispatch(push('/login'));
 };
+/*
 const StyledMenu = withStyles({
   paper: {
     border: '1px solid #d3d4d5',
@@ -51,11 +64,9 @@ const StyledMenu = withStyles({
       horizontal: 'center',
     }}
   />
-));
-
-const Header = ({ dispatch }) => {
+)); */
+const Header = ({ uiDesignHeader, dispatch }) => {
   const classes = useStyles();
-  const [avatarButton, setAvatarButton] = useState(null);
   return (
     <Headers>
       <List>
@@ -97,7 +108,7 @@ const Header = ({ dispatch }) => {
             <IconButton
               aria-controls="dropdown-menu-avatar-header"
               aria-haspopup="true"
-              onClick={(e) => setAvatarButton(e.currentTarget)}
+              onClick={(e) => dispatch(handleClickAvatar(e))}
             >
               <Avatar
                 alt="default"
@@ -105,12 +116,12 @@ const Header = ({ dispatch }) => {
                 className={classes.avatar}
               />
             </IconButton>
-            <StyledMenu
+            <Menu
               id="dropdown-menu-avatar-header"
-              anchorEl={avatarButton}
+              anchorEl={uiDesignHeader.clickedAvatarButton}
               keepMounted
-              open={Boolean(avatarButton)}
-              onClose={() => setAvatarButton(null)}
+              open={Boolean(uiDesignHeader.clickedAvatarButton)}
+              onClose={() => dispatch(handleClickAvatarClose())}
             >
               <MenuItem>
                 <IconSpace>
@@ -138,7 +149,7 @@ const Header = ({ dispatch }) => {
               </MenuItem>
               <MenuItem
                 onClick={() => {
-                  handleLogoutUser(setAvatarButton, dispatch);
+                  handleLogoutUser(dispatch);
                 }}
               >
                 <IconSpace>
@@ -148,7 +159,7 @@ const Header = ({ dispatch }) => {
                 </IconSpace>
                 Sair
               </MenuItem>
-            </StyledMenu>
+            </Menu>
           </IconContext.Provider>
         </Element>
       </List>
@@ -159,5 +170,6 @@ const Header = ({ dispatch }) => {
 const mapStateToProps = (state) => ({
   ...state,
   user: state.user.user,
+  uiDesignHeader: state.uiDesign.header,
 });
 export default connect(mapStateToProps)(Header);

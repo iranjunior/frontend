@@ -9,6 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
+import PropType from 'prop-types';
 import api, { config } from '../../Services/api';
 import {
   LOADED_VACANCIES,
@@ -148,6 +149,7 @@ const Panel = ({
   dispatch,
 }) => {
   const classes = useStyles();
+
   useEffect(() => {
     loadVacancies(vacancies, dispatch);
     loadSpecialities(specialities, dispatch);
@@ -277,6 +279,16 @@ const Panel = ({
     </Container>
   );
 };
+
+Panel.propTypes = {
+  uiDesign: PropType.object.isRequired,
+  specialities: PropType.array.isRequired,
+  setSpecialities: PropType.array.isRequired,
+  vacancies: PropType.arrayOf(PropType.object).isRequired,
+  orderVacancies: PropType.string.isRequired,
+  dispatch: PropType.func.isRequired,
+};
+
 
 const mapStateToProps = (state) => ({
   ...state,

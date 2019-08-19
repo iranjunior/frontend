@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from '../../Components/Header';
 import Sidebar from '../../Components/Sidebar';
 import SwitchPanel from '../../Routes/SwitchPanel';
@@ -37,5 +38,13 @@ const Home = ({ user, dispatch }) => {
     </>
   );
 };
+Home.propTypes = {
+  user: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
+const mapStateToProps = (state) => ({
+  ...state,
+  user: state.user,
+});
 
-export default connect((state) => ({ ...state, user: state.user }))(Home);
+export default connect(mapStateToProps)(Home);

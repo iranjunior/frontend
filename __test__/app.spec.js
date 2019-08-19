@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 // import renderer from 'react-test-renderer';
 
 // import configureStore from 'redux-mock-store';
-import App from '../../src/App';
+import App from '../src/App';
 /*
 const mockStore = configureStore();
 const initialState = [

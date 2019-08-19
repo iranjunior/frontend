@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { IconContext } from 'react-icons';
 import { MdPersonOutline, MdLockOutline } from 'react-icons/md';
+import PropTypes from 'prop-types';
 import {
   EMAIL_USER,
   PASSWORD_USER,
@@ -103,5 +104,12 @@ const Login = ({ user, dispatch }) => (
     </Card>
   </Container>
 );
+Login.propTypes = {
+  user: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+});
 
-export default connect((state) => ({ user: state.auth.user }))(Login);
+export default connect(mapStateToProps)(Login);

@@ -18,6 +18,7 @@
     "babel-preset-react-app": "^7.0.0",
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "check-prop-types": "^1.1.2",
     "connected-react-router": "^6.0.0",
     "css-loader": "2.1.1",
     "dotenv": "6.2.0",

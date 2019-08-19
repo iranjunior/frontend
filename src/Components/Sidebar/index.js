@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IconContext } from 'react-icons';
 import Avatar from '@material-ui/core/Avatar';
+import PropTypes from 'prop-types';
 import {
   MdPieChartOutlined,
   MdCast,
@@ -130,6 +131,12 @@ const Sidebar = ({ user, dispatch }) => {
   );
 };
 
-export default connect((state) => ({ ...state, user: state.user.user, route: state.routes.route }))(
-  Sidebar,
-);
+Sidebar.propTypes = {
+  user: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
+const mapStateToProps = (state) => ({
+  ...state,
+  user: state.user.user,
+});
+export default connect(mapStateToProps)(Sidebar);

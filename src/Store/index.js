@@ -5,7 +5,7 @@ import reducers from '../Reducers';
 
 import history from '../Routes/history';
 
-const middlewares = [thunk, routerMiddleware(history)];
+export const middlewares = [thunk, routerMiddleware(history)];
 
 const store = createStore(connectRouter(history)(reducers), applyMiddleware(...middlewares));
 
