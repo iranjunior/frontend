@@ -1,21 +1,27 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import store from '../src/Store';
 import configureStore from 'redux-mock-store';
 import Header from '../src/Components/Header';
-import { middlewares } from '../src/Store';
-import configureStore from 'redux-mock-store';
 
-const mockStore = configureStore({ middlewares });
+const mockStore = configureStore();
 
-initialState = {};
-
-const store = mockStore(initialState);
+const initialState = {
+  uiDesign: {
+    header: {},
+  },
+};
+let store;
+let wrapper;
 
 describe('Testando redux no Header', () => {
+  beforeEach(() => {
+    store = mockStore(initialState);
+    wrapper = shallow(<Header store={store} />).dive();
+  });
   it('deve renderizar corretamente', () => {
-    const wrapper = shallow(<Header />, { context: { store } }).dive();
-
     expect(wrapper).toMatchSnapshot();
+  });
+  it('Deve ter apenas um header', () => {
+    expect(wrapper.length).toBe(1);
   });
 });

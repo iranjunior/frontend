@@ -65,7 +65,7 @@ const StyledMenu = withStyles({
     }}
   />
 )); */
-const Header = ({ uiDesignHeader, dispatch }) => {
+export const Header = ({ uiDesignHeader, dispatch }) => {
   const classes = useStyles();
   return (
     <Headers data-test="header">
